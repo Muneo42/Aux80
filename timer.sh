@@ -23,9 +23,9 @@ if [ ! -d $HOME/log ]
 		echo -e "${GREEN}log directory exist!${NC}"
 fi
 
-if [ -z "$arg" ]
+if [ -z "$1" ]
 	then
-		echo "NOPE First value not gucci! But its ok! :D"
+		echo "1st Value Missing! But its ok! :D"
 		echo -e "${RED}for use : \"name\" \"dance_name\" number${NC}"
 		echo ""
 		echo "----------------------------------------"
