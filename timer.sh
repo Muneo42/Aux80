@@ -14,11 +14,11 @@ echo ""
 echo "----------------------------------------"
 echo ""
 
-if [ ! -d $HOME/log ]
+if [ ! -d "$HOME"/log ]
 	then
 		echo -e "${GREEN}log directory doesnt exist yet. Creating...${NC}"
-		mkdir $HOME/log
-		touch $log
+		mkdir "$HOME"/log
+		touch "$log"
 	else
 		echo -e "${GREEN}log directory exist!${NC}"
 fi
@@ -46,9 +46,9 @@ if [ -z "$1" ]
 		echo ""
 		echo "----------------------------------------"
 		echo ""
-		date >> $log
-		sleep $dormir 2>> $log
-		echo "----------------------------------------" >> $log
+		date >> "${log}"
+		sleep "$dormir" 2>> "$log"
+		echo "----------------------------------------" >> "$log"
 		exit 1
 	else
 		echo -e "${GREEN}Good job! You entered value correctly!${NC}"
@@ -60,12 +60,12 @@ echo ""
 
 first="Please wait $dormir Seconds"
 second="Now you can go"
-date >> $log
-sleep $3 2>> $log  
-echo "----------------------------------------" >> $log
-echo "Hello Welcome," $arg $first
-echo "The path is" $0
-echo "Done!" $second "and dance the" $argv
+date >> "${log}"
+sleep "$3" 2>> "$log"  
+echo "----------------------------------------" >> "$log"
+echo "Hello Welcome," "$arg" "$first"
+echo "The path is" "$0"
+echo "Done!" "$second" "and dance the" "$argv"
 echo ""
 echo "----------------------------------------"
 echo ""
