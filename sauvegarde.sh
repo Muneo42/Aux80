@@ -7,6 +7,22 @@ NC='\033[0m' # No Color
 BOLD='\e[1m' # BOLD
 NONE='\e[0m' # Plain Text
 
+
+## Function
+Sauvegarde()
+{
+	local var=$1
+	if [ ! -d "$HOME"/$1 ] # Check si /log existe.
+	then
+		echo -e "${RED}log directory doesnt exist yet. ${GREEN}Creating...${NC}"
+		mkdir "$HOME"/$1
+	else
+		echo -e "${GREEN}Saving /log files to /backup.${NC}"
+		cp -vua "$HOME"/$1 "$HOME"/backup
+		echo -e "${GREEN}DONE!${NC}"
+fi
+}
+
 ## Main
 if  [ $1 = "-h" ] # Option -h
 	then
@@ -37,22 +53,5 @@ if [ ! -d "$HOME"/backup ] # Check si /backup existe.
 		echo -e "${GREEN}DONE! Dir Created.${NC}"	
 fi
 
-if [ ! -d "$HOME"/log ] # Check si /log existe.
-	then
-		echo -e "${RED}log directory doesnt exist yet. ${GREEN}Creating...${NC}"
-		mkdir "$HOME"/log
-	else
-		echo -e "${GREEN}Saving /log files to /backup.${NC}"
-		cp -vua "$HOME"/log "$HOME"/backup
-		echo -e "${GREEN}DONE!${NC}"
-fi
-
-if [ ! -d "$HOME"/bin ] # Check si /bin existe.
-	then
-		echo -e "${RED}bin directory doesnt exist yet. ${GREEN}    Creating...${NC}"
-		mkdir "$HOME"/bin
-	else
-		echo -e "${GREEN}Saving /bin files to /backup.${NC}"
-		cp -vua "$HOME"/bin "$HOME"/backup
-		echo -e "${GREEN}DONE!${NC}"
-fi
+Sauvegarde "bin"
+Sauvegarde "log"
