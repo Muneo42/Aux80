@@ -1,6 +1,12 @@
 #!/bin/bash
 
-if  [ $1 = "-h" ]
+#Variables
+GREEN='\033[0;32m' # Green Color
+RED='\033[0;31m' # Red Color
+NC='\033[0m' # No Color
+
+#Main
+if  [ $1 = "-h" ] # Option -h
 	then
 		echo "NAME"
 		echo -e "\tSauvegarde de Fichier"
@@ -10,11 +16,6 @@ if  [ $1 = "-h" ]
 		echo -e "\tFor Usage : sauvegarde.sh"
 		exit 0
 fi
-
-GREEN='\033[0;32m' # Green Color
-RED='\033[0;31m' # Red Color
-NC='\033[0m' # No Color
-
 
 ls $HOME | grep bin
 ls $HOME | grep log
