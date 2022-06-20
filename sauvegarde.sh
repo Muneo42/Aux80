@@ -28,7 +28,7 @@ Mayday()
 	echo -e "${BOLD}NAME${NONE}"
 	echo -e "\tSauvegarde de Fichier"
 	echo -e "${BOLD}SYNOPSIS${NONE}"
-	echo -e "\tSauvegarde de Fichier Creer par moi. LOL"
+	echo -e "\tsauvegarde.sh [OPTION]"
 	echo -e "${BOLD}DESCRIPTION${NONE}"
 	echo -e "\tFor Usage : sauvegarde.sh"
 }
