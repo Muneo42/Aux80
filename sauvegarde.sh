@@ -29,7 +29,7 @@ if [ ! -d "$HOME"/log ] # Check si /log existe.
 		mkdir "$HOME"/log
 	else
 		echo -e "${GREEN}Saving /log files to /backup.${NC}"
-		cp -rvua "$HOME"/log "$HOME"/backup
+		cp -vua "$HOME"/log "$HOME"/backup
 		echo -e "${GREEN}DONE!${NC}"
 fi
 
@@ -39,6 +39,6 @@ if [ ! -d "$HOME"/bin ] # Check si /bin existe.
 		mkdir "$HOME"/bin
 	else
 		echo -e "${GREEN}Saving /bin files to /backup.${NC}"
-		cp -rvua "$HOME"/bin "$HOME"/backup
+		cp -vua "$HOME"/bin "$HOME"/backup
 		echo -e "${GREEN}DONE!${NC}"
 fi
