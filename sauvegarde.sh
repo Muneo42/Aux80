@@ -4,15 +4,17 @@
 GREEN='\033[0;32m' # Green Color
 RED='\033[0;31m' # Red Color
 NC='\033[0m' # No Color
+BOLD='\e[1m' # BOLD
+NONE='\e[0m' # Plain Text
 
 #Main
 if  [ $1 = "-h" ] # Option -h
 	then
-		echo "NAME"
+		echo -e "${BOLD}NAME${NONE}"
 		echo -e "\tSauvegarde de Fichier"
-		echo "SYNOPSIS"
+		echo -e "${BOLD}SYNOPSIS${NONE}"
 		echo -e "\tSauvegarde de Fichier Creer par moi. LOL"
-		echo "DESCRIPTION"
+		echo -e "${BOLD}DESCRIPTION${NONE}"
 		echo -e "\tFor Usage : sauvegarde.sh"
 		exit 0
 fi
