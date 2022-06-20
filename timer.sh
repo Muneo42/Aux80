@@ -1,6 +1,6 @@
 #!/bin/bash
 
-arg=${1:-jayjay}
+arg=${1:-jayjay} # Valeur de Base.
 argv=$2
 dormir=$3
 log=$HOME/log/timer.log
@@ -14,7 +14,7 @@ echo ""
 echo "----------------------------------------"
 echo ""
 
-if [ ! -d "$HOME"/log ]
+if [ ! -d "$HOME"/log ] #Si le repertoire $HOME n'exitste pas.
 	then
 		echo -e "${GREEN}log directory doesnt exist yet. Creating...${NC}"
 		mkdir "$HOME"/log
@@ -23,7 +23,7 @@ if [ ! -d "$HOME"/log ]
 		echo -e "${GREEN}log directory exist!${NC}"
 fi
 
-if [ -z "$1" ]
+if [ -z "$1" ] # Si $1 est NULL.
 	then
 		echo "1st Value Missing! But its ok! :D"
 		echo -e "${RED}for use : \"name\" \"dance_name\" number${NC}"
@@ -38,7 +38,7 @@ if [ -z "$1" ]
 		echo "----------------------------------------"
 		echo ""
 		exit 1
-	elif ! [[ $dormir =~ $re ]]
+	elif ! [[ $dormir =~ $re ]] # Si $dormir n'est pas un nombre.
 	then
 		echo -e "${RED}Stupid boi you need to enter a number!${NC}" >&2
 		echo "In the third feild!"
