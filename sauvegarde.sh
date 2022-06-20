@@ -1,5 +1,16 @@
 #!/bin/bash
 
+if  [ $1 = "-h" ]
+	then
+		echo "NAME"
+		echo -e "\tSauvegarde de Fichier"
+		echo "SYNOPSIS"
+		echo -e "\tSauvegarde de Fichier Creer par moi. LOL"
+		echo "DESCRIPTION"
+		echo -e "\tFor Usage : sauvegarde.sh"
+		exit 0
+fi
+
 GREEN='\033[0;32m' # Green Color
 RED='\033[0;31m' # Red Color
 NC='\033[0m' # No Color
