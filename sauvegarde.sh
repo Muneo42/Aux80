@@ -66,7 +66,7 @@ Dest()
 		if [ -e "$HOME"/"$arg" ] # Check si un fichier backup existe.
 		then
 			echo -e "${RED}!!!CONFLICT!!!"
-			echo -e "${RED}File ${arg} already exist!"
+			echo -e "${RED}${arg} is a file!"
 			exit 1
 		fi
 		echo -e "${RED}Backup directory doesnt exist.${NC}"
