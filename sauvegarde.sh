@@ -64,12 +64,18 @@ Mayday()
 	echo -e "${BOLD}NAME${NONE}"
 	echo -e "\tSauvegarde de Fichier"
 	echo -e "${BOLD}SYNOPSIS${NONE}"
-	echo -e "\tsauvegarde.sh [OPTION]"
+	echo -e "\tsauvegarde.sh [OPTION] ou sauvegarde.sh [OPTION] [TARGET]"
 	echo -e "${BOLD}OPTIONS${NONE}"
 	echo -e "\t-h\tpermet d'afficher cette aie et quite le logiciel"
 	echo -e "\t-v\tpermet demander a sauvegarde.sh de dire ce qu'il fait"
 	echo -e "\t-d\tpermet d'indiquer un autre repertoire de destination de la sauvegarde"
 	echo -e "\t-s\tpermet d'indiquer un autre repertoire de souce a sauvegarder"
+}
+
+MessagErreur()
+{
+	echo -e "${RED}${BOLD}sauvegarde.sh : option invalide!${NC}"
+	echo -e "Saisissez <<sauvegarde.sh -h>> pour plus d'informations."
 }
 
 Verbose()
@@ -185,7 +191,7 @@ do
 		"-v") Verbose;;
 		"-d") Dest $2 ; shift ;;
 		"-s") Src $2 ; shift ;;
-		*) echo -e "${RED}G${GREEN}e${BLUE}t${RED} R${GREEN}i${BLUE}c${RED}k${GREEN} R${BLUE}o${RED}l${GREEN}l${BLUE}e${RED}d${NC}" ; Mayday ; exit 2;;
+		*) MessagErreur ; exit 2;;
 	esac
 	shift
 	if [ "$1" = "-v" ]
@@ -193,4 +199,4 @@ do
 		shift
 	fi
 done
-
+echo -e "${RED}G${GREEN}e${BLUE}t${RED} R${GREEN}i${BLUE}c${RED}k${GREEN} R${BLUE}o${RED}l${GREEN}l${BLUE}e${RED}d${NC}"
