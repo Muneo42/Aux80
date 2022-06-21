@@ -1,6 +1,9 @@
 #!/bin/bash
 
 ## Variables
+WCScript=$0
+WScript=${0%/*}
+NScript=${0##/*/}
 VERBOSE=0
 BOOL=$#
 DST=${2:-backup} # Valeur de Base
@@ -47,14 +50,14 @@ Sauvegarde_Silence()
 		then
 			mkdir "$HOME"/log
 		else
-			cp -vua "$HOME"/log "$HOME"/backup
+			cp -ua "$HOME"/log "$HOME"/backup
 	fi
 
 	if [ ! -d "$HOME"/bin ] # Check si /bin existe.
 		then
 			mkdir "$HOME"/bin
 		else
-			cp -vua "$HOME"/bin "$HOME"/backup
+			cp -ua "$HOME"/bin "$HOME"/backup
 	fi
 	echo "Silence"
 }
@@ -171,6 +174,7 @@ Src()
 charexists()
 {
 	local var=$1
+	shift
 	if [[ "$@" =~ "$var" ]]
 	then
   		VERBOSE=1
@@ -178,14 +182,15 @@ charexists()
 }
 
 ## Main
-charexists $@ "-v"
-
+echo -e "${BOLD}The Script is at ${WScript} and the script name is ${NScript}${NC}"
+charexists "-v" $@
+echo "$VERBOSE"
 if [ $BOOL = 0 ]
 then
 	Sauvegarde_Silence
 fi
 while [ ! -z "$1" ]
-do
+do	
 	case $1 in
 		"-h") Mayday ;;
 		"-v") Verbose;;
@@ -193,10 +198,11 @@ do
 		"-s") Src $2 ; shift ;;
 		*) MessagErreur ; exit 2;;
 	esac
-	shift
 	if [ "$1" = "-v" ]
 	then
 		shift
 	fi
+	shift
 done
-echo -e "${RED}G${GREEN}e${BLUE}t${RED} R${GREEN}i${BLUE}c${RED}k${GREEN} R${BLUE}o${RED}l${GREEN}l${BLUE}e${RED}d${NC}"
+## Troll
+##echo -e "${RED}G${GREEN}e${BLUE}t${RED} R${GREEN}i${BLUE}c${RED}k${GREEN} R${BLUE}o${RED}l${GREEN}l${BLUE}e${RED}d${NC}"
