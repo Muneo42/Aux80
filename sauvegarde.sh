@@ -4,16 +4,16 @@
 WCScript=$0
 WScript=${0%/*}
 NScript=${0##/*/}
-VERBOSE=0
-BOOL=$#
-DST=${2:-backup} # Valeur de Base
-SRC=${4:-bin} # Valeur de Base
-GREEN='\033[0;32m' # Green Color
-RED='\033[0;31m' # Red Color
-BLUE='\033[0;34m' # Blue Color
-NC='\033[0m' # No Color
-BOLD='\e[1m' # BOLD
-NONE='\e[0m' # Plain Text
+Verbose=0
+Bool=$#
+Dst=${2:-backup} # Valeur de Base
+Src=${4:-bin} # Valeur de Base
+Green='\033[0;32m' # Green Color
+Red='\033[0;31m' # Red Color
+Blue='\033[0;34m' # Blue Color
+Nc='\033[0m' # No Color
+Bold='\e[1m' # Bold
+None='\e[0m' # Plain Text
 
 
 ## Function
@@ -23,12 +23,12 @@ Sauvegarde()
 	local arg=${2:-backup}
 	if [ ! -d "$HOME"/$var ] # Check si /log existe.
 	then
-		echo -e "${RED}log directory doesnt exist yet. ${GREEN}Creating...${NC}"
+		echo -e "${Red}log directory doesnt exist yet. ${Green}Creating...${Nc}"
 		mkdir "$HOME"/"$var"
 	else
-		echo -e "${GREEN}Saving $var files to ${arg}.${NC}"
+		echo -e "${Green}Saving $var files to ${arg}.${Nc}"
 		cp -vua "$HOME"/"$var" "$HOME"/"$arg"
-		echo -e "${GREEN}DONE!${NC}"
+		echo -e "${Green}DONE!${Nc}"
 	fi
 	echo "Save"
 }
@@ -39,8 +39,8 @@ Sauvegarde_Silence()
 		then
 			if [ -e "$HOME"/backup ] # Check si un fichier backup existe.
 			then
-				echo -e "${RED}!!!CONFLICT!!!"
-				echo -e "${RED}File Backup already exist!"
+				echo -e "${Red}!!!CONFLICT!!!"
+				echo -e "${Red}File Backup already exist!"
 				exit 1
 			fi
 			mkdir "$HOME"/backup
@@ -64,11 +64,11 @@ Sauvegarde_Silence()
 
 Mayday()
 {
-	echo -e "${BOLD}NAME${NONE}"
+	echo -e "${Bold}NAME${None}"
 	echo -e "\tSauvegarde de Fichier"
-	echo -e "${BOLD}SYNOPSIS${NONE}"
+	echo -e "${Bold}SYNOPSIS${None}"
 	echo -e "\tsauvegarde.sh [OPTION] ou sauvegarde.sh [OPTION] [TARGET]"
-	echo -e "${BOLD}OPTIONS${NONE}"
+	echo -e "${Bold}OPTIONS${None}"
 	echo -e "\t-h\tpermet d'afficher cette aie et quite le logiciel"
 	echo -e "\t-v\tpermet demander a sauvegarde.sh de dire ce qu'il fait"
 	echo -e "\t-d\tpermet d'indiquer un autre repertoire de destination de la sauvegarde"
@@ -77,7 +77,7 @@ Mayday()
 
 MessagErreur()
 {
-	echo -e "${RED}${BOLD}sauvegarde.sh : option invalide!${NC}"
+	echo -e "${Red}${Bold}sauvegarde.sh : option invalide!${Nc}"
 	echo -e "Saisissez <<sauvegarde.sh -h>> pour plus d'informations."
 }
 
@@ -87,13 +87,13 @@ Verbose()
 	then
 		if [ -e "$HOME"/backup ] # Check si un fichier backup existe.
 		then
-			echo -e "${RED}!!!CONFLICT!!!"
-			echo -e "${RED}File Backup already exist!"
+			echo -e "${Red}!!!CONFLICT!!!"
+			echo -e "${Red}File Backup already exist!"
 			exit 1
 		fi
-		echo -e "${RED}Backup directory doesnt exist yet. ${GREEN}Creating...${NC}"
+		echo -e "${Red}Backup directory doesnt exist yet. ${Green}Creating...${Nc}"
 		mkdir "$HOME"/backup
-		echo -e "${GREEN}DONE! Dir Created.${NC}"	
+		echo -e "${Green}DONE! Dir Created.${Nc}"	
 		fi	
 	Sauvegarde "bin"
 	Sauvegarde "log"
@@ -111,14 +111,14 @@ Dest()
 	then
 		if [ -e "$HOME"/"$arg" ] # Check si un fichier backup existe.
 		then
-			echo -e "${RED}!!!CONFLICT!!!"
-			echo -e "${RED}${arg} is a file!"
+			echo -e "${Red}!!!CONFLICT!!!"
+			echo -e "${Red}${arg} is a file!"
 			exit 1
 		fi
-		echo -e "${RED}Backup directory doesnt exist.${NC}"
+		echo -e "${Red}Backup directory doesnt exist.${Nc}"
 		exit 1
 		fi
-	if [ "$VERBOSE" = 1 ]
+	if [ "$Verbose" = 1 ]
 	then
 		Sauvegarde "bin"
 		Sauvegarde "log"
@@ -141,28 +141,28 @@ Src()
 	then
 		if [ -e "$HOME"/backup ] # Check si un fichier backup existe.
 		then
-			echo -e "${RED}!!!CONFLICT!!!"
-			echo -e "${RED}File ${var} already exist!"
+			echo -e "${Red}!!!CONFLICT!!!"
+			echo -e "${Red}File ${var} already exist!"
 			exit 1
 		fi
-		echo -e "${RED}Backup directory doesnt exist.${NC}"
+		echo -e "${Red}Backup directory doesnt exist.${Nc}"
 		exit 1
 	fi
-	if [ "$VERBOSE" = 1 ]
+	if [ "$Verbose" = 1 ]
 	then
 		if [ ! -d "$HOME"/"$var" ] # Check si le dossier existe.
 		then
-			echo -e "${RED}log directory doesnt exist!"
+			echo -e "${Red}log directory doesnt exist!"
 			exit 1
 		else
-			echo -e "${GREEN}Saving $var files to backup.${NC}"
+			echo -e "${Green}Saving $var files to backup.${Nc}"
 			cp -vua "$HOME"/"$var" "$HOME"/backup
-			echo -e "${GREEN}DONE!${NC}"
+			echo -e "${Green}DONE!${Nc}"
 		fi
 	else
 		if [ ! -d "$HOME"/"$var" ] # Check si le dossier existe.
 		then
-			echo -e "${RED}log directory doesnt exist!"
+			echo -e "${Red}log directory doesnt exist!"
 			exit 1
 		else
 			cp -vua "$HOME"/"$var" "$HOME"/backup
@@ -177,15 +177,15 @@ charexists()
 	shift
 	if [[ "$@" =~ "$var" ]]
 	then
-  		VERBOSE=1
+  		Verbose=1
 	fi
 }
 
 ## Main
-echo -e "${BOLD}The Script is at ${WScript} and the script name is ${NScript}${NC}"
+echo -e "${Bold}The Script is at ${WScript} and the script name is ${NScript}${Nc}"
 charexists "-v" $@
-echo "$VERBOSE"
-if [ $BOOL = 0 ]
+echo "$Verbose"
+if [ $Bool = 0 ]
 then
 	Sauvegarde_Silence
 fi
@@ -205,4 +205,4 @@ do
 	shift
 done
 ## Troll
-##echo -e "${RED}G${GREEN}e${BLUE}t${RED} R${GREEN}i${BLUE}c${RED}k${GREEN} R${BLUE}o${RED}l${GREEN}l${BLUE}e${RED}d${NC}"
+##echo -e "${Red}G${Green}e${Blue}t${Red} R${Green}i${Blue}c${Red}k${Green} R${Blue}o${Red}l${Green}l${Blue}e${Red}d${Nc}"
