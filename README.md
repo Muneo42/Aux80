@@ -1,7 +1,8 @@
 # Aux80
 
-##Consignes des TP:
-* TP1: Premier script
+##Consignes des TP:  
+
+*	TP1: Premier script
 >Pré-requis  
 >   1. Dans le répertoire utilisateur, créer un répertoire bin  
 >   2. Se déconnecter de la session graphique et se ré-identifier  
