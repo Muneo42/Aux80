@@ -62,18 +62,18 @@
 >   -h : affiche l’aide.  
 >   -v : affiche les messages plutôt que les écrire dans le fichier de log.  
 * TP 08.1 : Chaines et sous-chaines  
->   Rappel :
->   ${chaine#souschaine} # Efface l'occurrence la plus courte# de $souschaine à partir du début de $chaine.  
->   ${chaine##souschaine}# Efface l'occurrence la plus longue# de $souschaine à partir du début de $chaine.  
->   ${chaine%souschaine}# Efface l'occurrence la plus courte de $souschaine# à partir de la fin de $chaine.  
->   ${chaine%%souschaine}# Efface l'occurrence la plus longue de $souschaine,# en partant de la fin de $chaine.  
->   En utilisant les paramètres -d et -s précédant pour la sauvegarde, ajouter le code nécessairepour :  
->     Extraire du chemin fourni par l’utilisateur les dossiers parents de la source et de la destination dans des variables distinctes.  
->     Extraire le nom du fichier ou dossier de la source et de la destination que l’on mettradans des variables distinctes.  
->   L’objectif est donc d’avoir trois variables pour chaque option prenant un chemin en paramètre,par exemple pour -s :  
->     varCheminComplet : /home/$USER/bin  
->     varDossierParent : /home/$USER  
->     varFichierSauvegarde : bin  
+>   Rappel :  
+>   ${chaine#souschaine} # Efface l'occurrence la plus courte# de $souschaine à partir du début de $chaine. 
+>   ${chaine##souschaine} # Efface l'occurrence la plus longue# de $souschaine à partir du début de $chaine.     
+>   ${chaine%souschaine} # Efface l'occurrence la plus courte de $souschaine# à partir de la fin de $chaine.     
+>   ${chaine%%souschaine} # Efface l'occurrence la plus longue de $souschaine,# en partant de la fin de $chaine.    
+>   En utilisant les paramètres -d et -s précédant pour la sauvegarde, ajouter le code nécessairepour :     
+>     Extraire du chemin fourni par l’utilisateur les dossiers parents de la source et de la destination dans des variables distinctes.    
+>     Extraire le nom du fichier ou dossier de la source et de la destination que l’on mettradans des variables distinctes.     
+>   L’objectif est donc d’avoir trois variables pour chaque option prenant un chemin en paramètre,par exemple pour -s :    
+>     varCheminComplet : /home/$USER/bin    
+>     varDossierParent : /home/$USER    
+>     varFichierSauvegarde : bin    
 * TP 09 : While  
 > Maintenant que le case est fonctionnel pour toutes les options prévues pour notre script :  
 >   1. Ajouter une syntaxe while pour faire une boucle qui répète le case autant de fois qu’il y a d’options à traiter  
