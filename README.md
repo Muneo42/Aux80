@@ -63,7 +63,7 @@
 >   -v : affiche les messages plutôt que les écrire dans le fichier de log.  
 * TP 08.1 : Chaines et sous-chaines  
 >   Rappel :  
->   ${chaine#souschaine} # Efface l'occurrence la plus courte# de $souschaine à partir du début de $chaine. 
+>   ${chaine#souschaine} # Efface l'occurrence la plus courte# de $souschaine à partir du début de $chaine.   
 >   ${chaine##souschaine} # Efface l'occurrence la plus longue# de $souschaine à partir du début de $chaine.     
 >   ${chaine%souschaine} # Efface l'occurrence la plus courte de $souschaine# à partir de la fin de $chaine.     
 >   ${chaine%%souschaine} # Efface l'occurrence la plus longue de $souschaine,# en partant de la fin de $chaine.    
