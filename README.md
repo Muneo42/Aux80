@@ -6,10 +6,10 @@ __**Consignes des TP:**__
 >   1. Dans le répertoire utilisateur, créer un répertoire bin
 >   2. Se déconnecter de la session graphique et se ré-identifier
 >   3. Envoyer par en conversation privée la copie d’écran de la commande.
->TP Premier scrip :
+>TP Premier scrip :  
 >1. Dans ce répertoire créer un fichier timer.sh
 >2. Mettre en première ligne le shebang qui définit l’environnement d’exécution du script.
->3. Renseigner trois commandes :
+>3. Renseigner trois commandes :  
 >   Une commande echo avec un message d’acceuil :echo "Votre Message d'accueil"
 >   Une commande sleep faisant attendre 5s (voir le manuel pour l’usage de cette commande)
 >   Une commande echo avec un message de fin d’exécution :echo "Votre Message de fin de traitement"
@@ -17,7 +17,7 @@ __**Consignes des TP:**__
 >5. Rendre ce script exécutable.
 >6. Se placer à la racine, vérifier que vous pouvez exécuter le script
 * TP2 : Les arguments de script
->1. Modifier le script timer.sh pour :
+>1. Modifier le script timer.sh pour :  
 >   Passer le message d’accueil en argument
 >   Passer le message de sortie en argument
 * TP3 : Redirection et fichier de log
@@ -31,12 +31,12 @@ __**Consignes des TP:**__
 >2. Proposer une ligne de commande permettant de réaliser les actions de script timer.sh en une seule ligne,
 >en utilisant les enchaînements de commandes logiques.
 * TP5 : test et if
->1. Modifier le script timer.sh pour vérifier avec un test if si :
+>1. Modifier le script timer.sh pour vérifier avec un test if si :  
 >   il y a bien un répertoire de log.
 >   des chaines de caractères non-nulles pour $1, $2 et $3
 >2. Pour $3, trouver un moyen de vérifier que c’est bien un nombre qui est passé en paramètre.
 >3. Il est possible de gérer l’absence d’arguments directement en définissant une valeurpar défaut de la variable
->de la manière suivante :
+>de la manière suivante :  
 >   var=${1:-valeurParDéfaut}
 >Ainsi une commande non suivi de son argument verra la variable $var prendre pour valeur “valeurParDéfaut” si $1 est nul.
 >Reparamétrer vos variables et options du script timer.sh pour définir des valeurs par défaut si les arguments
@@ -45,8 +45,8 @@ __**Consignes des TP:**__
 > Pré-requis
 >   1. Créer un nouveau script sauvegarde.sh
 >   2. Créer un dossier backup dans le répertoire home de votre utilisateur
->Avec ce script :
->   1. Lister les répertoires du home de l’utilisateur connecté, et si un répertoire bin ou logexiste alors :
+>Avec ce script :  
+>   1. Lister les répertoires du home de l’utilisateur connecté, et si un répertoire bin ou logexiste alors :  
 >     Afficher un message de sauvegarde précisant quel répertoire est en cours de sauvegarde
 >     Copier chaque fichier de ce répertoire et afficher un message pour chaque fichierainsi sauvegardé
 >   2. Trouver une méthode qui permettrait de ne pas sauvegarder les fichiers déjà sauveg-ardés.
