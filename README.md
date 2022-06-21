@@ -1,6 +1,6 @@
 # Aux80
 
-**Consignes des TP:**
+__**Consignes des TP:**__
 * TP1: Premier script
 >Pré-requis
 >   1. Dans le répertoire utilisateur, créer un répertoirebin
