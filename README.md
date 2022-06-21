@@ -55,7 +55,7 @@ Consignes des TP:
 > Adapter le script sauvegarde.sh pour que la gestion de l’aide devienne une fonction appelédans le corps du script
 * TP8 : Case
 > Adapter le script sauvegarde .sh et ajouter uncasepermettant de gérer les options suivantes:
-> -d : permet d’indiquer le nom du fichier de destination de la sauvegarde
-> -s : permet d’indiquer le répertoire source a sauvegarder
-> -h : affiche l’aide
-> -v : affiche les messages plutôt que les écrire dans le fichier de log
+>-d : permet d’indiquer le nom du fichier de destination de la sauvegarde
+>-s : permet d’indiquer le répertoire source a sauvegarder
+>-h : affiche l’aide
+>-v : affiche les messages plutôt que les écrire dans le fichier de log
