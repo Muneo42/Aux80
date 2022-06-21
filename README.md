@@ -63,14 +63,14 @@
 >	-v : affiche les messages plutôt que les écrire dans le fichier de log.  
 * TP 08.1 : Chaines et sous-chaines  
 >Rappel :  
->	${chaine#souschaine} # Efface l'occurrence la plus courte# de $souschaine à partir du début de $chaine.      
+>       ${chaine#souschaine} # Efface l'occurrence la plus courte# de $souschaine à partir du début de $chaine.      
 >	${chaine##souschaine} # Efface l'occurrence la plus longue# de $souschaine à partir du début de $chaine.       
 >	${chaine%souschaine} # Efface l'occurrence la plus courte de $souschaine# à partir de la fin de $chaine.       
 >	${chaine%%souschaine} # Efface l'occurrence la plus longue de $souschaine,# en partant de la fin de $chaine.      
->En utilisant les paramètres -d et -s précédant pour la sauvegarde, ajouter le code nécessairepour :        
+>1. En utilisant les paramètres -d et -s précédant pour la sauvegarde, ajouter le code nécessairepour :        
 >	Extraire du chemin fourni par l’utilisateur les dossiers parents de la source et de la destination dans des variables distinctes.      
 >	Extraire le nom du fichier ou dossier de la source et de la destination que l’on mettradans des variables distinctes.      
->L’objectif est donc d’avoir trois variables pour chaque option prenant un chemin en paramètre,par exemple pour -s :     
+>2. L’objectif est donc d’avoir trois variables pour chaque option prenant un chemin en paramètre,par exemple pour -s :     
 >	varCheminComplet : /home/$USER/bin     
 >	varDossierParent : /home/$USER     
 >	varFichierSauvegarde : bin     
