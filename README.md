@@ -62,7 +62,7 @@
 >   -h : affiche l’aide.  
 >   -v : affiche les messages plutôt que les écrire dans le fichier de log.  
 * TP 09 : While  
->   Maintenant que le case est fonctionnel pour toutes les options prévues pour notre script :  
->   1.Ajouter une syntaxe while pour faire une boucle qui répète le case autant de fois qu’il y a d’options à traiter  
+> Maintenant que le case est fonctionnel pour toutes les options prévues pour notre script :  
+>   1. Ajouter une syntaxe while pour faire une boucle qui répète le case autant de fois qu’il y a d’options à traiter  
 >   quand on appelle le script sauvegarde.sh2.  
 >   Adapter votre script pour mettre ce traitement des options dans une fonction
