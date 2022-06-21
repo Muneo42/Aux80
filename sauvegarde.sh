@@ -7,6 +7,7 @@ DST=${2:-backup} # Valeur de Base
 SRC=${4:-bin} # Valeur de Base
 GREEN='\033[0;32m' # Green Color
 RED='\033[0;31m' # Red Color
+BLUE='\033[0;34m' # Blue Color
 NC='\033[0m' # No Color
 BOLD='\e[1m' # BOLD
 NONE='\e[0m' # Plain Text
@@ -16,6 +17,7 @@ NONE='\e[0m' # Plain Text
 Sauvegarde()
 {
 	local var=${1}
+	local arg=${2:-backup}
 	if [ ! -d "$HOME"/$var ] # Check si /log existe.
 	then
 		echo -e "${RED}log directory doesnt exist yet. ${GREEN}Creating...${NC}"
@@ -162,14 +164,20 @@ Src()
 
 charexists()
 {
-  if [[ "$@" =~ "-v" ]]
-  then
-  	VERBOSE=1
-  fi
+	local var=$1
+	if [[ "$@" =~ "$var" ]]
+	then
+  		VERBOSE=1
+	fi
 }
 
 ## Main
-charexists $@
+charexists $@ "-v"
+
+if [ $BOOL = 0 ]
+then
+	Sauvegarde_Silence
+fi
 while [ ! -z "$1" ]
 do
 	case $1 in
@@ -177,6 +185,7 @@ do
 		"-v") Verbose;;
 		"-d") Dest $2 ; shift ;;
 		"-s") Src $2 ; shift ;;
+		*) echo -e "${RED}G${GREEN}e${BLUE}t${RED} R${GREEN}i${BLUE}c${RED}k${GREEN} R${BLUE}o${RED}l${GREEN}l${BLUE}e${RED}d${NC}" ; Mayday ; exit 2;;
 	esac
 	shift
 	if [ "$1" = "-v" ]
@@ -184,7 +193,4 @@ do
 		shift
 	fi
 done
-if [ $BOOL = 0 ]
-then
-	Sauvegarde_Silence
-fi
+
