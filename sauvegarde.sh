@@ -1,7 +1,10 @@
 #!/bin/bash
 
 ## Variables
-arg=${2:-backup} # Valeur de Base
+VERBOSE=0
+BOOL=$#
+DST=${2:-backup} # Valeur de Base
+SRC=${4:-bin} # Valeur de Base
 GREEN='\033[0;32m' # Green Color
 RED='\033[0;31m' # Red Color
 NC='\033[0m' # No Color
@@ -18,10 +21,40 @@ Sauvegarde()
 		echo -e "${RED}log directory doesnt exist yet. ${GREEN}Creating...${NC}"
 		mkdir "$HOME"/"$var"
 	else
-		echo -e "${GREEN}Saving /log files to ${arg}.${NC}"
+		echo -e "${GREEN}Saving $var files to ${arg}.${NC}"
 		cp -vua "$HOME"/"$var" "$HOME"/"$arg"
 		echo -e "${GREEN}DONE!${NC}"
 	fi
+	echo "Save"
+}
+
+Sauvegarde_Silence()
+{
+	if [ ! -d "$HOME"/backup ] # Check si /backup existe.
+		then
+			if [ -e "$HOME"/backup ] # Check si un fichier backup existe.
+			then
+				echo -e "${RED}!!!CONFLICT!!!"
+				echo -e "${RED}File Backup already exist!"
+				exit 1
+			fi
+			mkdir "$HOME"/backup
+	fi
+	
+	if [ ! -d "$HOME"/log ] # Check si /log existe.
+		then
+			mkdir "$HOME"/log
+		else
+			cp -vua "$HOME"/log "$HOME"/backup
+	fi
+
+	if [ ! -d "$HOME"/bin ] # Check si /bin existe.
+		then
+			mkdir "$HOME"/bin
+		else
+			cp -vua "$HOME"/bin "$HOME"/backup
+	fi
+	echo "Silence"
 }
 
 Mayday()
@@ -50,13 +83,15 @@ Verbose()
 		echo -e "${RED}Backup directory doesnt exist yet. ${GREEN}Creating...${NC}"
 		mkdir "$HOME"/backup
 		echo -e "${GREEN}DONE! Dir Created.${NC}"	
-		fi
+		fi	
 	Sauvegarde "bin"
 	Sauvegarde "log"
+	echo "Verbose"
 }
 
 Dest()
 {
+	local arg=$1
 	if [ -z "$arg" ]
 	then
 		echo "You need to specify Dest" ; exit 1
@@ -72,8 +107,16 @@ Dest()
 		echo -e "${RED}Backup directory doesnt exist.${NC}"
 		exit 1
 		fi
-	Sauvegarde "bin"
-	Sauvegarde "log"
+	if [ "$VERBOSE" = 1 ]
+	then
+		Sauvegarde "bin"
+		Sauvegarde "log"
+		shift
+	else
+		Sauvegarde_Silence "bin"
+		Sauvegarde_Silence "log"
+	fi
+	echo "Destination"
 }
 
 Src()
@@ -94,47 +137,54 @@ Src()
 		echo -e "${RED}Backup directory doesnt exist.${NC}"
 		exit 1
 	fi
-	
-	if [ ! -d "$HOME"/"$var" ] # Check si le dossier existe.
+	if [ "$VERBOSE" = 1 ]
 	then
-		echo -e "${RED}log directory doesnt exist!"
-		exit 1
+		if [ ! -d "$HOME"/"$var" ] # Check si le dossier existe.
+		then
+			echo -e "${RED}log directory doesnt exist!"
+			exit 1
+		else
+			echo -e "${GREEN}Saving $var files to backup.${NC}"
+			cp -vua "$HOME"/"$var" "$HOME"/backup
+			echo -e "${GREEN}DONE!${NC}"
+		fi
 	else
-		echo -e "${GREEN}Saving $var files to backup.${NC}"
-		cp -vua "$HOME"/"$var" "$HOME"/backup
-		echo -e "${GREEN}DONE!${NC}"
+		if [ ! -d "$HOME"/"$var" ] # Check si le dossier existe.
+		then
+			echo -e "${RED}log directory doesnt exist!"
+			exit 1
+		else
+			cp -vua "$HOME"/"$var" "$HOME"/backup
+		fi
 	fi
+	echo "Source"
+}
+
+charexists()
+{
+  if [[ "$@" =~ "-v" ]]
+  then
+  	VERBOSE=1
+  fi
 }
 
 ## Main
-case $1 in
-	"-h") Mayday ; exit 0;;
-	"-v") Verbose ; exit 0;;
-	"-d") Dest ; exit 0;;
-	"-s") Src $2; exit 0;;
-esac
-
-if [ ! -d "$HOME"/backup ] # Check si /backup existe.
+charexists $@
+while [ ! -z "$1" ]
+do
+	case $1 in
+		"-h") Mayday ;;
+		"-v") Verbose;;
+		"-d") Dest $2 ; shift ;;
+		"-s") Src $2 ; shift ;;
+	esac
+	shift
+	if [ "$1" = "-v" ]
 	then
-		if [ -e "$HOME"/backup ] # Check si un fichier backup existe.
-		then
-			echo -e "${RED}!!!CONFLICT!!!"
-			echo -e "${RED}File Backup already exist!"
-			exit 1
-		fi
-		mkdir "$HOME"/backup
-fi
-
-if [ ! -d "$HOME"/log ] # Check si /log existe.
-	then
-		mkdir "$HOME"/log
-	else
-		cp -vua "$HOME"/log "$HOME"/backup
-fi
-
-if [ ! -d "$HOME"/bin ] # Check si /bin existe.
-	then
-		mkdir "$HOME"/bin
-	else
-		cp -vua "$HOME"/bin "$HOME"/backup
+		shift
+	fi
+done
+if [ $BOOL = 0 ]
+then
+	Sauvegarde_Silence
 fi
