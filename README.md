@@ -3,7 +3,7 @@
 __**Consignes des TP:**__
 * TP1: Premier script
 >Pré-requis
->   1. Dans le répertoire utilisateur, créer un répertoirebin
+>   1. Dans le répertoire utilisateur, créer un répertoire bin
 >   2. Se déconnecter de la session graphique et se ré-identifier
 >   3. Envoyer par en conversation privée la copie d’écran de la commande.
 >TP Premier scrip :
@@ -17,7 +17,8 @@ __**Consignes des TP:**__
 >5. Rendre ce script exécutable.
 >6. Se placer à la racine, vérifier que vous pouvez exécuter le script
 * TP2 : Les arguments de script
->1. Modifier le script timer.sh pour :• Passer le message d’accueil en argument
+>1. Modifier le script timer.sh pour :
+>   Passer le message d’accueil en argument
 >   Passer le message de sortie en argument
 * TP3 : Redirection et fichier de log
 >1. Créer un répertoire ~/log
@@ -59,3 +60,4 @@ __**Consignes des TP:**__
 >   -s : permet d’indiquer le répertoire source a sauvegarder
 >   -h : affiche l’aide
 >   -v : affiche les messages plutôt que les écrire dans le fichier de log
+* Fin
