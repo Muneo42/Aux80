@@ -78,4 +78,10 @@
 > Maintenant que le case est fonctionnel pour toutes les options prévues pour notre script :  
 >	1. Ajouter une syntaxe while pour faire une boucle qui répète le case autant de fois qu’il y a d’options à traiter  
 >	quand on appelle le script sauvegarde.sh  
->	2. Adapter votre script pour mettre ce traitement des options dans une fonction
+>	2. Adapter votre script pour mettre ce traitement des options dans une fonction  
+* TP 10 : Les tableaux  
+>Avant la sauvegarde des fichiers :  
+>	1. Lister les fichiers déjà sauvegardés, et stocker le résultat dans un tableau.  
+>	2. Avant la sauvegarde de chaque fichier, vérifier si il n’est pas déjà présent dans la mêmeversion, au quel cas passer cette copie.  
+>Note :  Pour ceux qui ont utiliser cp -r, il va falloir créer une boucle se substituer au comportement récursif de la commande  
+>Note 2 :  quand vous comparez les fichiers, vouspouvez utiliser une méthode de hash (md5sum), ou vérifier en plus des noms, les tailles en octet que vous trouverez avec un ls -l
