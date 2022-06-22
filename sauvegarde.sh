@@ -1,6 +1,7 @@
 #!/bin/bash
 
 ## Variables
+Check=0
 WCScript=$0
 WScript=${0%/*}
 NScript=${0##/*/}
@@ -11,6 +12,7 @@ Src=${4:-bin} # Valeur de Base
 Green='\033[0;32m' # Green Color
 Red='\033[0;31m' # Red Color
 Blue='\033[0;34m' # Blue Color
+Yellow='\033[0;33m' # Yellow
 Nc='\033[0m' # No Color
 Bold='\e[1m' # Bold
 None='\e[0m' # Plain Text
@@ -157,9 +159,13 @@ Src()
 		else
 			for file in ${acopier[@]}
 			do
-				echo -e "${Green}Saving $file files to backup.${Nc}"
-				cp -vu $file "$HOME"/backup
-				echo -e "${Green}DONE!${Nc}"
+				fileexist $file
+				if [ $Check = 0 ]
+				then
+					echo -e "${Green}Saving $file files to backup.${Nc}"
+					#cp -vu $file "$HOME"/backup
+					echo -e "${Green}DONE!${Nc}"
+				fi
 			done
 		fi
 	else
@@ -187,10 +193,28 @@ charexists()
 	fi
 }
 
+fileexist()
+{
+	for temp in ${dest[@]}
+		do
+		echo $temp
+		echo $1
+		if [ $1 -ot $temp ]
+		then
+			echo -e "${Yellow}$temp already Exist and its the same one. So it skipped it.${Nc}"
+			Check=1
+			return
+		fi
+	done
+	Check=0
+}
+
 ## Main
-declare acopier=($HOME/$2/*)
+declare acopier=($(ls $HOME/$2/*))
+declare dest=($(ls $HOME/backup/*))
+echo ${dest[@]}
 echo -e "${Bold}========================================================================${Nc}"
-echo -e "${Bold}||The Script is at ${WScript} and the script name is ${NScript}${Nc}||"
+echo -e "${Bold}The Script is at ${WScript} and the script name is ${NScript}${Nc}"
 echo -e "${Bold}========================================================================${Nc}"
 charexists "-v" $@
 #echo "$Verbose"
