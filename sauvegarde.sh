@@ -15,7 +15,6 @@ Nc='\033[0m' # No Color
 Bold='\e[1m' # Bold
 None='\e[0m' # Plain Text
 
-
 ## Function
 Sauvegarde()
 {
@@ -132,6 +131,7 @@ Dest()
 
 Src()
 {
+	local way=$HOME/$var
 	local var=$1
 	if [ -z "$1" ]
 	then
@@ -155,9 +155,12 @@ Src()
 			echo -e "${Red}log directory doesnt exist!"
 			exit 1
 		else
-			echo -e "${Green}Saving $var files to backup.${Nc}"
-			cp -vua "$HOME"/"$var" "$HOME"/backup
-			echo -e "${Green}DONE!${Nc}"
+			for file in ${acopier[@]}
+			do
+				echo -e "${Green}Saving $file files to backup.${Nc}"
+				cp -vu $file "$HOME"/backup
+				echo -e "${Green}DONE!${Nc}"
+			done
 		fi
 	else
 		if [ ! -d "$HOME"/"$var" ] # Check si le dossier existe.
@@ -165,7 +168,10 @@ Src()
 			echo -e "${Red}log directory doesnt exist!"
 			exit 1
 		else
-			cp -vua "$HOME"/"$var" "$HOME"/backup
+			for file in ${acopier[@]}
+			do
+				cp -vua $file "$HOME"/backup
+			done
 		fi
 	fi
 	#echo "Source"
@@ -182,7 +188,10 @@ charexists()
 }
 
 ## Main
-echo -e "${Bold}The Script is at ${WScript} and the script name is ${NScript}${Nc}"
+declare acopier=($HOME/$2/*)
+echo -e "${Bold}========================================================================${Nc}"
+echo -e "${Bold}||The Script is at ${WScript} and the script name is ${NScript}${Nc}||"
+echo -e "${Bold}========================================================================${Nc}"
 charexists "-v" $@
 #echo "$Verbose"
 if [ $Bool = 0 ]
@@ -190,19 +199,24 @@ then
 	Sauvegarde_Silence
 fi
 while [ ! -z "$1" ]
-do	
+do
+	if [[ "$1" = "-v" && ! -z $2 ]]
+	then
+		shift
+	fi
 	case $1 in
 		"-h") Mayday ;;
-		"-v") Verbose;;
+		"-v") Verbose ;;
 		"-d") Dest $2 ; shift ;;
 		"-s") Src $2 ; shift ;;
 		*) MessagErreur ; exit 2;;
 	esac
+	shift
 	if [ "$1" = "-v" ]
 	then
 		shift
 	fi
-	shift
 done
+exit 0;
 ## Troll
 ##echo -e "${Red}G${Green}e${Blue}t${Red} R${Green}i${Blue}c${Red}k${Green} R${Blue}o${Red}l${Green}l${Blue}e${Red}d${Nc}"
