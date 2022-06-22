@@ -30,7 +30,7 @@ Sauvegarde()
 		cp -vua "$HOME"/"$var" "$HOME"/"$arg"
 		echo -e "${Green}DONE!${Nc}"
 	fi
-	echo "Save"
+	#echo "Save"
 }
 
 Sauvegarde_Silence()
@@ -59,7 +59,7 @@ Sauvegarde_Silence()
 		else
 			cp -ua "$HOME"/bin "$HOME"/backup
 	fi
-	echo "Silence"
+	#echo "Silence"
 }
 
 Mayday()
@@ -97,7 +97,7 @@ Verbose()
 		fi	
 	Sauvegarde "bin"
 	Sauvegarde "log"
-	echo "Verbose"
+	#echo "Verbose"
 }
 
 Dest()
@@ -127,7 +127,7 @@ Dest()
 		Sauvegarde_Silence "bin"
 		Sauvegarde_Silence "log"
 	fi
-	echo "Destination"
+	#echo "Destination"
 }
 
 Src()
@@ -168,7 +168,7 @@ Src()
 			cp -vua "$HOME"/"$var" "$HOME"/backup
 		fi
 	fi
-	echo "Source"
+	#echo "Source"
 }
 
 charexists()
@@ -184,7 +184,7 @@ charexists()
 ## Main
 echo -e "${Bold}The Script is at ${WScript} and the script name is ${NScript}${Nc}"
 charexists "-v" $@
-echo "$Verbose"
+#echo "$Verbose"
 if [ $Bool = 0 ]
 then
 	Sauvegarde_Silence
