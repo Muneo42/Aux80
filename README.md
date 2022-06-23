@@ -85,3 +85,9 @@
 >Avant la sauvegarde des fichiers :  
 >	1. Lister les fichiers déjà sauvegardés, et stocker le résultat dans un tableau.  
 >	2. Avant la sauvegarde de chaque fichier, vérifier si il n’est pas déjà présent dans la même version, au quel cas passer cette copie.  
+* TP 11 : calculs scientifiques  
+>Envoyer les copies d’écran des opérations suivantes en ligne de commande à l’aide de la commande bc :  
+> 1. 12 fois 24, le tout à la puissance 32  
+> 2. Racine carré de la racine carré de 17  
+> 3. Le nombre de chiffre au dessus de la virgule pour le résultat de la première réponse  
+* PS : Sur mon git, y a ce repo `https://github.com/Muneo42/Piscine-Feb2019/tree/master/eval_expr/ex00` qui est un mini BC :3 
